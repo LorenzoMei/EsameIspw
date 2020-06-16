@@ -7,5 +7,5 @@ addons:
                 token:
                         #secure: abf09675b7beaabb3463247e07cbf3062a3c0e55
 script:
-        - ant -v build test
+        - ant build
         - sonar-scanner
