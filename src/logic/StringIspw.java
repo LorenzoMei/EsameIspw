@@ -11,14 +11,15 @@ public class StringIspw {
 
 	public static void main(String[] args) {
 		String[] string = new String[2];
-	    String arg = "Lettere contenute nella stringa contatenata %d";
+		String msg = "";
+	    
 		
 		Logger logger = Logger.getLogger("StringIspw");
 		InputStreamReader input = new InputStreamReader(System.in);
 		BufferedReader buffer = new BufferedReader(input);
 		
 		for(int i = 0; i < 2; i++) {
-			String msg = String.format("Inserisci la stringa numero %d \n", i);
+			msg = String.format("Inserisci la stringa numero %d", i);
 			logger.log(Level.INFO, msg);
 			try {
 				string[i] = buffer.readLine();
@@ -29,13 +30,17 @@ public class StringIspw {
 		
 		
 		String resultConc = conc(string[0], string[1], "-");
-		String resultFormat = format(arg, resultConc.length());
+		String resultFormat = format(resultConc.length());
 		String[] resultSplit = split(resultConc, "-");
-		logger.log(Level.INFO, "Stringhe concatenate: " + resultConc);
-		logger.log(Level.INFO, "Stringa formattata: " + resultFormat);
+		
+		msg = String.format("Stringhe concatenate: %s", resultConc);
+		logger.log(Level.INFO, msg);
+		msg = String.format("Stringa formattata: %s", resultFormat);
+		logger.log(Level.INFO, msg);
 		
 		for(int i = 0; i < resultSplit.length; i++) {
-			logger.log(Level.INFO, "String " + i + ": " + resultSplit[i]);
+			msg = String.format("Stringa %d: %s", i, resultSplit[i]);
+			logger.log(Level.INFO, msg);
 		}
 		
 	}
@@ -44,8 +49,9 @@ public class StringIspw {
 		return String.join(delimiter, stringOne, stringTwo);
 	}
 	
-	public static String format(String string, int i) {
-		return String.format(string, i);
+	public static String format(int i) {
+		String arg = "Lettere contenute nella stringa contatenata %d";
+		return String.format(arg, i);
 	}
 	
 	public static String[] split(String string, String splitter) {
