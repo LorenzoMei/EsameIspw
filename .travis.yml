@@ -1,13 +1,11 @@
-language:
-     java
+language: java
 jdk:
-    - openjdk8
+        - openjdk8
 addons:
-  sonarcloud:
-    organization: "lorenzomei"
-    token: "e23ad1a8f9672c85a628ed84067633fb55c15c96"
+        sonarcloud:
+                organization: lorenzomei
+                token:
+                        #secure: abf09675b7beaabb3463247e07cbf3062a3c0e55
 script:
-  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-  - sonar-scanner
-script: 
-    ant build
+        - ant -v build test
+        - sonar-scanner
